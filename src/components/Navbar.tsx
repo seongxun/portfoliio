@@ -13,7 +13,7 @@ export default function Navbar() {
       setScrolled(window.scrollY > 20);
 
       // Simple active link tracker
-      const sections = ["hero", "about", "skills", "projects", "sandbox", "awards", "education"];
+      const sections = ["hero", "about", "experience", "skills", "projects", "sandbox", "awards", "education"];
       const current = sections.find((sect) => {
         const el = document.getElementById(sect);
         if (el) {
@@ -31,6 +31,7 @@ export default function Navbar() {
 
   const navItems = [
     { id: "about", label: "About" },
+    { id: "experience", label: "Experience" },
     { id: "skills", label: "Skills" },
     { id: "projects", label: "Projects" },
     { id: "sandbox", label: "Simulator" },

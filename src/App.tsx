@@ -6,6 +6,7 @@
 import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
 import About from "./components/About";
+import Experience from "./components/Experience";
 import Skills from "./components/Skills";
 import Projects from "./components/Projects";
 import TrustSandbox from "./components/TrustSandbox";
@@ -24,6 +25,9 @@ export default function App() {
 
       {/* About Bento-Grid with copy-to-clip controls */}
       <About />
+
+      {/* Current work experience and responsibilities */}
+      <Experience />
 
       {/* Filterable Skills & Tech Stacks Pane */}
       <Skills />
