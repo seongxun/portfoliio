@@ -189,7 +189,7 @@ export default function About() {
                 <Check size={18} />
               </div>
               <p className="text-slate-600 text-xs leading-normal">
-                Spring Boot 기반 MSA와 Node.js API 서버를 개발하고, 최근에는 Gemini Enterprise 기반 멀티에이전트 설계·프롬프트 검증·제품 QA로 경험을 확장하고 있습니다.
+                Spring Boot 기반 MSA와 Node.js API 서버를 개발하고, 최근에는 금융 도메인 노코드 멀티 에이전트를 기획하고 사내 Gemini Enterprise 교육 자료를 제작했습니다.
               </p>
             </div>
           </div>

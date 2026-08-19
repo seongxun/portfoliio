@@ -90,6 +90,7 @@ export default function Awards() {
   };
 
   const currentAward = portfolioData.awards[0];
+  const additionalAwards = portfolioData.awards.slice(1);
 
   return (
     <section id="awards" className="py-20 bg-white relative">
@@ -101,10 +102,10 @@ export default function Awards() {
             HONORS & ACTIVITIES
           </span>
           <h2 className="font-display font-bold text-3xl sm:text-4xl text-brand-deep mt-3">
-            백엔드와 AI API를 연결한 HanArmy
+            프로젝트로 이어진 수상 경험
           </h2>
           <p className="text-slate-500 text-sm mt-3">
-            카카오 챗봇의 응답 제한을 고려해 callbackUrl 기반 비동기 응답 흐름을 구현했고, 하나 디지털 파워온 2기 우수상을 수상했습니다.
+            HanArmy와 대화형 인공지능 여행 계획 서비스로 두 차례 수상했습니다.
           </p>
         </div>
 
@@ -244,6 +245,50 @@ export default function Awards() {
           </div>
 
         </div>
+
+        {additionalAwards.length > 0 && (
+          <div className="mt-10 grid md:grid-cols-2 gap-6">
+            {additionalAwards.map((award, index) => (
+              <motion.article
+                key={award.title}
+                initial={{ opacity: 0, y: 16 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.2 }}
+                transition={{ delay: index * 0.08, duration: 0.45 }}
+                className="bg-[#fcfdfe] border border-slate-200 rounded-2xl p-6 sm:p-7 shadow-sm"
+              >
+                <div className="flex items-start gap-3">
+                  <div className="w-11 h-11 rounded-xl bg-amber-50 text-amber-500 border border-amber-100 flex items-center justify-center shrink-0">
+                    <Award size={22} />
+                  </div>
+                  <div>
+                    <span className="text-xs text-slate-400 font-mono font-semibold">
+                      {award.period}
+                    </span>
+                    <h3 className="font-display font-bold text-lg text-brand-deep mt-0.5">
+                      {award.title}
+                    </h3>
+                    <p className="text-xs text-brand-primary font-bold mt-1">
+                      {award.organization} / {award.role}
+                    </p>
+                  </div>
+                </div>
+
+                <div className="flex flex-col gap-3 mt-5">
+                  {award.accomplishments.map((accomplishment) => (
+                    <div
+                      key={accomplishment}
+                      className="flex gap-3 text-xs leading-relaxed text-slate-600 bg-white p-3 rounded-lg border border-slate-100"
+                    >
+                      <span className="text-[#10b981] font-bold shrink-0">✓</span>
+                      <p>{accomplishment}</p>
+                    </div>
+                  ))}
+                </div>
+              </motion.article>
+            ))}
+          </div>
+        )}
 
       </div>
     </section>
