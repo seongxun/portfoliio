@@ -38,7 +38,7 @@ export const portfolioData = {
   personal: {
     name: "박성준 (Seongjun Park)",
     title: "백엔드 개발자",
-    roleDescription: "Spring Boot 기반 MSA와 Node.js API 서버를 개발하고, 동시성 제어와 부하 테스트를 통해 데이터 정합성과 성능을 검증해 왔습니다. 최근에는 Gemini Enterprise 기반 멀티에이전트 설계와 프롬프트 품질 검증, 제품 QA를 수행하고 있습니다.",
+    roleDescription: "Spring Boot 기반 MSA와 Node.js API 서버를 개발하고, 동시성 제어와 부하 테스트를 통해 데이터 정합성과 성능을 검증해 왔습니다. 최근에는 금융 도메인 노코드 멀티 에이전트를 기획하고 사내 Gemini Enterprise 교육 자료를 제작했습니다.",
     email: "rjqlrl30@naver.com",
     phone: "010-7723-8372",
     github: "https://github.com/seongxun",
@@ -80,10 +80,8 @@ export const portfolioData = {
     {
       category: "AI Agent",
       items: [
-        { name: "Gemini Enterprise", evidence: "GoldenPlanet", desc: "Agent Designer 기반 교육 실습 흐름과 에이전트 구성안을 설계했습니다." },
-        { name: "Multi-Agent Design", evidence: "GoldenPlanet", desc: "에이전트 역할·협업 규칙과 요청 기반 라우팅 구조를 설계했습니다." },
-        { name: "Prompt Evaluation", evidence: "GoldenPlanet", desc: "Expected Output·근거·제약 조건을 기준으로 Test-Improve-Retest 검증을 수행했습니다." },
-        { name: "Product QA", evidence: "GoldenPlanet", desc: "사내 MVP의 기능을 점검하고 재현 절차와 개선안을 정리했습니다." }
+        { name: "Gemini Enterprise", evidence: "GoldenPlanet", desc: "사내 교육 슬라이드를 제작하고 실습 안내를 진행했습니다." },
+        { name: "No-code Multi-Agent", evidence: "GoldenPlanet", desc: "금융 도메인 적용을 가정한 노코드 멀티 에이전트 기획안을 설계했습니다." }
       ]
     }
   ] as SkillCategory[],

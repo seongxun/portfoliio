@@ -1,46 +1,31 @@
 import { motion } from "motion/react";
 import {
-  BookOpenCheck,
   BriefcaseBusiness,
   CheckCircle2,
   Presentation,
-  SearchCheck,
   Workflow,
 } from "lucide-react";
 
 const responsibilities = [
   {
-    icon: BookOpenCheck,
-    title: "Gemini Enterprise 교육 콘텐츠 설계",
-    description:
-      "교육자료를 Agent Designer 중심으로 재구성하고, Instructions·Knowledge·Preview·Guardrail·A/B Test를 하나의 실습 흐름으로 설계했습니다.",
-  },
-  {
     icon: Workflow,
-    title: "멀티에이전트 구조 및 라우팅 설계 개선",
+    title: "금융 도메인 노코드 멀티 에이전트 설계",
     description:
-      "설계안에서 메인·업무파악·주간보고서 작성 에이전트의 역할과 협업 규칙을 정의하고, 고정 순차 호출을 요청 기반 동적 라우팅으로 재설계했습니다.",
-  },
-  {
-    icon: SearchCheck,
-    title: "프롬프트 품질 검증",
-    description:
-      "Expected Output·근거·제약 조건을 구체화하고 Test–Improve–Retest 방식으로 출력 형식과 제약 준수를 반복 검증했습니다.",
+      "금융 도메인 적용을 가정한 노코드 멀티 에이전트 기획안을 설계했습니다.",
   },
   {
     icon: Presentation,
-    title: "교육 운영 및 제품 QA",
+    title: "사내 Gemini Enterprise 교육 슬라이드 제작 및 실습 안내",
     description:
-      "교육 후 참가자 피드백과 디브리핑 내용을 정리하고, 사내 MVP의 기능을 점검해 재현 절차와 개선안을 작성했습니다.",
+      "사내 Gemini Enterprise 교육 슬라이드를 제작하고 실습 안내를 진행했습니다.",
   },
 ];
 
 const keywords = [
   "Gemini Enterprise",
-  "Multi-Agent",
-  "Prompt Evaluation",
-  "Product QA",
-  "Google Cloud",
+  "No-code Multi-Agent",
+  "교육 자료 제작",
+  "실습 안내",
 ];
 
 export default function Experience() {
@@ -55,10 +40,10 @@ export default function Experience() {
             WORK EXPERIENCE
           </span>
           <h2 className="font-display font-bold text-3xl sm:text-4xl text-brand-deep mt-3">
-            골든플래닛 AX Product Unit 인턴 경험
+            노코드 멀티 에이전트 기획 및 GE 교육 자료 제작
           </h2>
           <p className="text-slate-500 text-sm mt-3">
-            AI Agent 교육 콘텐츠 설계부터 멀티에이전트 검증과 제품 QA까지 수행하고 있습니다.
+            금융 도메인 적용을 가정한 Gemini Enterprise 기반 기획안과 사내 교육 자료를 작성했습니다.
           </p>
         </div>
 
