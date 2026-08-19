@@ -148,7 +148,7 @@ export default function Hero() {
                 transition={{ duration: 0.5 }}
                 className="font-display font-black text-3xl sm:text-4xl text-brand-deep tracking-tight leading-[1.15]"
               >
-                금융 백엔드 개발자 <span className="text-brand-primary">박성준</span>입니다.
+                백엔드 개발자 <span className="text-brand-primary">박성준</span>입니다.
               </motion.h1>
               
               <motion.p
@@ -616,4 +616,3 @@ export default function Hero() {
     </section>
   );
 }
-

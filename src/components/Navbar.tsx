@@ -6,14 +6,14 @@ import { portfolioData } from "../data";
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [activeSection, setActiveSection] = useState("hero");
+  const [activeSection, setActiveSection] = useState("about");
 
   useEffect(() => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 20);
 
       // Simple active link tracker
-      const sections = ["hero", "about", "experience", "skills", "projects", "sandbox", "awards", "education"];
+      const sections = ["about", "hero", "experience", "skills", "projects", "sandbox", "awards", "education"];
       const current = sections.find((sect) => {
         const el = document.getElementById(sect);
         if (el) {

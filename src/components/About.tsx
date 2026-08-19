@@ -21,7 +21,7 @@ export default function About() {
     {
       icon: <Database className="text-brand-secondary" size={24} />,
       title: "정합성 (Consistency)",
-      desc: "금융 데이터에서 타협이란 없습니다. Race Condition과 소동이 벌어지는 동시 요청 상황에서 비관적 락(Pessimistic Lock)과 분산 트랜잭션을 배치해 완벽한 정밀도를 보증합니다.",
+      desc: "정합성이 중요한 데이터에서 타협하지 않습니다. Race Condition이 발생할 수 있는 동시 요청 상황에서 비관적 락(Pessimistic Lock)과 트랜잭션을 활용해 데이터의 정확성을 보장합니다.",
     },
     {
       icon: <ShieldCheck className="text-emerald-500" size={24} />,
@@ -31,7 +31,7 @@ export default function About() {
   ];
 
   return (
-    <section id="about" className="py-20 bg-white relative">
+    <section id="about" className="pt-28 pb-20 md:pt-32 bg-white relative">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Title */}
@@ -43,7 +43,7 @@ export default function About() {
             시스템의 신뢰를 기술로 구축합니다
           </h2>
           <p className="text-slate-500 text-sm mt-3">
-            비즈니스의 정점에 있는 금융 가치를 지키기 위해, 백엔드 아키텍처를 안전하고 빈틈없이 설계합니다.
+            비즈니스의 신뢰를 지탱하는 백엔드 아키텍처를 안전하고 확장 가능하게 설계합니다.
           </p>
         </div>
 
@@ -178,7 +178,7 @@ export default function About() {
                 <Check size={18} />
               </div>
               <p className="text-slate-600 text-xs leading-normal">
-                박성준은 **비관적 락(Pessimistic Lock)**, **JVM 동기화 모니터**, **Kafka 비동기 큐잉**, **Spring Security** 등을 상황에 맞게 올바르게 적용하여 금융 및 일반 서비스의 트랜잭션 수치 손상 가능성을 물리치고 정밀하고 이상적인 시스템 동작을 창조합니다.
+                비관적 락(Pessimistic Lock), JVM 동기화 모니터, Kafka 비동기 큐잉, Spring Security 등을 상황에 맞게 적용하여 다양한 서비스의 데이터 정합성과 안정적인 시스템 동작을 구현합니다.
               </p>
             </div>
           </div>

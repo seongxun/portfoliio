@@ -37,7 +37,7 @@ export interface Education {
 export const portfolioData = {
   personal: {
     name: "박성준 (Seongjun Park)",
-    title: "금융 시스템의 신뢰를 키우는 백엔드 개발자",
+    title: "신뢰할 수 있는 시스템을 만드는 백엔드 개발자",
     roleDescription: "성능, 정합성, 운영 안정성을 집요하게 고민하며 단순한 기능 구현을 넘어 비즈니스의 신뢰를 지탱하는 백엔드 시스템을 만듭니다.",
     email: "rjqlrl30@naver.com",
     phone: "010-7723-8372",

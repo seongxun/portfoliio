@@ -22,14 +22,14 @@ export default function Footer() {
                 SEONGJUN.P
               </span>
               <span className="text-[9.5px] font-mono tracking-wider text-slate-400 uppercase">
-                FinTech & Reliability Developer
+                Backend & Reliability Engineer
               </span>
             </div>
           </div>
 
           {/* Core statement */}
           <div className="text-center md:text-left max-w-sm text-xs text-slate-400 leading-normal">
-            성능, 정합성, 운영 안정성을 향한 집요한 집착으로 소중하고 민감한 금융 교환 생태계의 기틀을 견고하게 만듭니다.
+            성능, 정합성, 운영 안정성을 집요하게 고민하며 신뢰할 수 있는 백엔드 시스템의 기반을 구축합니다.
           </div>
 
           {/* Social Channels */}

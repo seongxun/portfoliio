@@ -20,11 +20,11 @@ export default function App() {
       {/* Premium Navigation */}
       <Navbar />
 
-      {/* Hero Header with Live Finexo Dashboard Widget */}
-      <Hero />
-
       {/* About Bento-Grid with copy-to-clip controls */}
       <About />
+
+      {/* Hero Header with Live Finexo Dashboard Widget */}
+      <Hero />
 
       {/* Current work experience and responsibilities */}
       <Experience />

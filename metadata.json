@@ -1,6 +1,6 @@
 {
   "name": "Park Seong-jun Portfolio",
-  "description": "금융 시스템의 신뢰를 키우는 백엔드 개발자 박성준의 포트폴리오 웹사이트",
+  "description": "신뢰할 수 있는 시스템을 만드는 백엔드 개발자 박성준의 포트폴리오 웹사이트",
   "requestFramePermissions": [],
   "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
 }
