@@ -23,17 +23,17 @@ export default function App() {
       {/* About Bento-Grid with copy-to-clip controls */}
       <About />
 
-      {/* Hero Header with Live Finexo Dashboard Widget */}
-      <Hero />
-
       {/* Current work experience and responsibilities */}
       <Experience />
 
-      {/* Filterable Skills & Tech Stacks Pane */}
-      <Skills />
+      {/* Flagship FinLearn project and architecture UI */}
+      <Hero />
 
       {/* Projects Timeline with MSA Architectures & JMeter Sliders */}
       <Projects />
+
+      {/* Filterable Skills & Tech Stacks Pane */}
+      <Skills />
 
       {/* Live System Trust & Database Locking Sandbox */}
       <TrustSandbox />

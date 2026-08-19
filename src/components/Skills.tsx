@@ -5,57 +5,77 @@ import { portfolioData, SkillCategory } from "../data";
 
 export default function Skills() {
   const [selectedCategory, setSelectedCategory] = useState<string>("All");
-  const [selectedSkill, setSelectedSkill] = useState<{name: string, level: string, desc: string} | null>({
+  const [selectedSkill, setSelectedSkill] = useState<{name: string, evidence: string, desc: string} | null>({
     name: "Spring Boot",
-    level: "Advanced",
-    desc: "웹 애플리케이션 프레임워크를 활용해 비즈니스 레이어를 효율적이고 정밀하게 설계합니다."
+    evidence: "FinLearn · CalIT",
+    desc: "REST API, Gateway 연동, 서비스 디스커버리 기반 요청 흐름을 구성했습니다."
   });
 
   // Unique project context mappings for interactive skill cards
   const skillMappings: Record<string, { applied: string; bullet: string }> = {
     "Java": {
       applied: "FinLearn / CalIT",
-      bullet: "객체 지향적 디자인 패턴 적용 및 멀티스레드 기반의 동작 흐름 완벽 제어"
+      bullet: "도메인 로직과 트랜잭션 경계를 구현하고 프로젝트 공통 개발 규칙에 맞춰 코드를 구성했습니다."
     },
     "Spring Boot": {
       applied: "FinLearn, CalIT",
-      bullet: "Spring Gateway 연동 및 Eureka 서비스 디스커버리, 독립 웹 MVC 라우팅 완벽 설계"
+      bullet: "REST API를 구현하고 Spring Cloud Gateway·Eureka와 서비스 요청 흐름을 연결했습니다."
     },
     "JPA (Hibernate)": {
       applied: "FinLearn / CalIT",
-      bullet: "지연 로딩과 페치 조인(Fetch Join)을 결합하여 N+1 성능 지연 원천 제거"
+      bullet: "계좌·주문·팀·일정 도메인의 엔티티 관계와 트랜잭션 단위 데이터 변경을 구현했습니다."
     },
     "Node.js": {
       applied: "HanArmy 우수상 (하나 디지털 파워온)",
-      bullet: "Kakao Skill API와 비동기 콜백 큐를 연동하여 OpenAI 타임아웃 획기적 해결"
+      bullet: "Kakao Skill API와 callbackUrl을 연결해 OpenAI 응답을 비동기로 전달했습니다."
     },
     "PostgreSQL": {
       applied: "FinLearn, CalIT",
-      bullet: "계좌 정합성을 위한 비관적 락(SELECT FOR UPDATE)을 걸고 동시 트레이딩을 안전 처리"
+      bullet: "관계형 스키마를 구성하고 FINLEARN 계좌 조회에 SELECT FOR UPDATE를 적용했습니다."
     },
     "Redis": {
-      applied: "FinLearn",
-      bullet: "고성능 글로벌 세션 임시 보관소 및 랭킹 산정을 위한 Sorted Set 자료구조 채용"
+      applied: "FinLearn / CalIT",
+      bullet: "로그아웃 토큰 블랙리스트와 서비스 상태·캐시 저장 용도로 적용했습니다."
     },
     "Kafka": {
-      applied: "FinLearn (MSA)",
-      bullet: "모의투자 결과 전송 및 랭킹/업적 반영 이벤트를 비동기적으로 전파하여 결합도 최소화"
+      applied: "FinLearn / CalIT",
+      bullet: "서비스 간 이벤트 전달과 알림·리마인더 처리 흐름에 사용했습니다."
     },
     "Docker": {
       applied: "FinLearn / CalIT",
-      bullet: "다양한 컨테이너별 독립 이미지 보관 및 일관적인 운영체제(OS) 중립 테스트 구축"
+      bullet: "애플리케이션과 데이터 저장소를 컨테이너로 구성해 팀 개발 환경을 통일했습니다."
     },
     "AWS": {
-      applied: "FinLearn 운영 서버",
-      bullet: "EC2 인스턴스를 통한 Gateway, RDS 관리 및 외부 네트워크 안정 통신 구축"
+      applied: "팀 배포 환경",
+      bullet: "EC2·RDS·S3 기반 배포 구성과 애플리케이션 외부 연결을 경험했습니다."
     },
-    "CI/CD": {
-      applied: "FinLearn GitHub Actions",
-      bullet: "메인 브랜치 코드 푸시 발생 시 Gradle 빌드 통과 여부 검증 후 원격 배포 자동화"
+    "GitHub Actions": {
+      applied: "FinLearn / CalIT",
+      bullet: "브랜치 변경 시 빌드 검증과 원격 배포 단계를 자동화했습니다."
+    },
+    "JMeter": {
+      applied: "FinLearn",
+      bullet: "단일 인스턴스와 Gateway 경유 시나리오를 나눠 평균·P95·처리량·오류율을 측정했습니다."
+    },
+    "Gemini Enterprise": {
+      applied: "GoldenPlanet",
+      bullet: "Agent Designer 기반 교육자료와 Instructions·Knowledge·Preview·Guardrail·A/B Test 실습 흐름을 구성했습니다."
+    },
+    "Multi-Agent Design": {
+      applied: "GoldenPlanet",
+      bullet: "메인·하위 에이전트의 역할과 협업 규칙, 요청 기반 라우팅 구조를 설계했습니다."
+    },
+    "Prompt Evaluation": {
+      applied: "GoldenPlanet",
+      bullet: "Expected Output·근거·제약 조건을 기준으로 Test-Improve-Retest 검증을 수행했습니다."
+    },
+    "Product QA": {
+      applied: "GoldenPlanet",
+      bullet: "사내 MVP 기능을 점검하고 재현 절차와 개선안을 문서화했습니다."
     }
   };
 
-  const categories = ["All", "Backend", "Database & Cache", "Data Pipeline", "DevOps & Infra"];
+  const categories = ["All", "Backend", "Database & Cache", "Data Pipeline", "DevOps & Infra", "AI Agent"];
 
   const getIconForCategory = (cat: string) => {
     switch (cat) {
@@ -76,7 +96,7 @@ export default function Skills() {
     ? allSkills
     : allSkills.filter(item => item.category === selectedCategory);
 
-  const handleSkillClick = (skill: { name: string; level: 'Expert' | 'Advanced' | 'Intermediate'; desc: string }) => {
+  const handleSkillClick = (skill: { name: string; evidence: string; desc: string }) => {
     setSelectedSkill(skill);
   };
 
@@ -90,10 +110,10 @@ export default function Skills() {
             TECH STACK & CAPABILITIES
           </span>
           <h2 className="font-display font-bold text-3xl sm:text-4xl text-brand-deep mt-3">
-            실전에서 검증된 기술들을 다룹니다
+            프로젝트에서 사용한 기술과 적용 근거
           </h2>
           <p className="text-slate-500 text-sm mt-3">
-            단순 기술 스택 나열을 넘어 실무 문제 해결을 위해 설계하고 집착스럽게 최적화한 기술들입니다.
+            숙련도 등급 대신 어떤 프로젝트에서 무엇을 구현했는지 설명합니다.
           </p>
         </div>
 
@@ -147,12 +167,8 @@ export default function Skills() {
                           {skill.name}
                         </h3>
                       </div>
-                      <span className={`px-2.5 py-0.5 rounded text-[10px] font-bold ${
-                        skill.level === "Advanced"
-                          ? "bg-blue-50 text-brand-primary"
-                          : "bg-slate-100 text-slate-600"
-                      }`}>
-                        {skill.level}
+                      <span className="px-2.5 py-0.5 rounded text-[10px] font-bold bg-blue-50 text-brand-primary">
+                        {skill.evidence}
                       </span>
                     </div>
                     <p className="text-slate-500 text-xs mt-3 line-clamp-2 leading-relaxed">
@@ -186,7 +202,7 @@ export default function Skills() {
                           {selectedSkill.name}
                         </h4>
                         <span className="text-xs text-brand-secondary font-semibold">
-                          실전 역량: {selectedSkill.level}
+                          적용 근거: {selectedSkill.evidence}
                         </span>
                       </div>
                     </div>
@@ -226,22 +242,20 @@ export default function Skills() {
                   ) : (
                     <div className="bg-slate-50 border border-slate-100 rounded-xl p-4 flex gap-2 text-xs text-slate-500 leading-normal select-none">
                       <Info size={14} className="text-slate-400 shrink-0 mt-0.5" />
-                      <p>해당 스택은 박성준 개발자의 설계 핵심과 지반을 형성하며, 다양한 파일럿 시뮬레이션 및 API 시스템 구현에 유기적으로 배치되었습니다.</p>
+                      <p>프로젝트 설명과 연결된 적용 사례를 정리 중입니다.</p>
                     </div>
                   )}
 
                   <hr className="border-slate-100" />
 
-                  {/* Summary bullet tip */}
-                  <div className="text-[11px] text-slate-400 font-mono flex items-center justify-between">
-                    <span>* 박성준 백엔드 통합 레벨 검증필</span>
-                    <span className="text-indigo-400 font-bold">STRICT_CHECK_OK</span>
-                  </div>
+                  <p className="text-[11px] text-slate-400 font-mono">
+                    기술별 설명은 실제 프로젝트 적용 범위를 기준으로 작성했습니다.
+                  </p>
                 </motion.div>
               ) : (
                 <div className="h-48 flex flex-col items-center justify-center text-slate-400 text-center gap-2">
                   <Compass size={28} className="animate-pulse" />
-                  <p className="text-xs">기술 목록을 클릭하여 실제 아키텍처에 구현되고 최적화된 상세 내역을 살펴보세요.</p>
+                  <p className="text-xs">기술 목록을 클릭해 프로젝트에서 사용한 방식과 근거를 살펴보세요.</p>
                 </div>
               )}
             </div>

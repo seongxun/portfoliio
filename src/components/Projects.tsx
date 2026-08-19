@@ -60,10 +60,10 @@ export default function Projects() {
             ADDITIONAL ENGINEERING PROJECTS
           </span>
           <h2 className="font-display font-bold text-3xl sm:text-4xl text-brand-deep mt-3">
-            견고한 협업과 보안 설계를 담은 프로젝트
+            협업 기능과 실시간 통신을 구현한 CalIT
           </h2>
           <p className="text-slate-500 text-sm mt-3">
-            팀 협업의 효율성을 보장하고 안전한 인가 권한 배치를 위해 Restful 아키텍처 및 영속성 최적화를 수행한 포트폴리오입니다.
+            한화시스템 BEYOND SW 캠프에서 진행한 1개월 프로젝트로, 백엔드 API와 실시간 협업 기능을 개발했습니다.
           </p>
         </div>
 
@@ -87,7 +87,7 @@ export default function Projects() {
                   <a
                     href={currentProject.github}
                     target="_blank"
-                    referrerPolicy="no-referrer"
+                    rel="noopener noreferrer"
                     className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-bold bg-slate-100 hover:bg-slate-200 text-slate-700 transition-all cursor-pointer border border-slate-200/40"
                   >
                     <Github size={13} /> Repo
@@ -97,7 +97,7 @@ export default function Projects() {
                   <a
                     href={currentProject.url}
                     target="_blank"
-                    referrerPolicy="no-referrer"
+                    rel="noopener noreferrer"
                     className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-bold bg-brand-light text-brand-primary border border-blue-100 hover:bg-blue-50 transition-all cursor-pointer"
                   >
                     <ExternalLink size={13} /> Live
@@ -179,7 +179,7 @@ export default function Projects() {
               </div>
 
               <p className="text-xs text-slate-500 leading-normal">
-                각 팀원이 API 및 일정에 접근할 때 데이터 충격을 주지 않고 JWT 인가 검증과 실시간 일정을 동기화 관리하는 가상 보드입니다.
+                JWT 기반 권한 확인과 일정 상태 변경 흐름을 화면으로 단순화한 UI 시뮬레이션입니다.
               </p>
 
               {/* Task board manager demo app */}
@@ -192,7 +192,7 @@ export default function Projects() {
                     onChange={(e) => setNewTitle(e.target.value)}
                     className="grow text-xs px-3 py-2 border rounded-lg focus:outline-none focus:border-brand-primary bg-white font-sans"
                   />
-                  <button type="submit" className="px-3 bg-brand-primary hover:bg-brand-primary/95 text-white rounded-lg flex items-center justify-center cursor-pointer">
+                  <button type="submit" aria-label="일정 추가" title="일정 추가" className="px-3 bg-brand-primary hover:bg-brand-primary/95 text-white rounded-lg flex items-center justify-center cursor-pointer">
                     <Plus size={16} />
                   </button>
                 </form>
@@ -210,6 +210,8 @@ export default function Projects() {
                         <div className="flex items-start gap-2.5">
                           <button
                             type="button"
+                            aria-label={`${t.title} 상태 변경`}
+                            title="일정 상태 변경"
                             onClick={() => handleToggleStatus(t.id)}
                             className={`w-4.5 h-4.5 rounded-md border flex items-center justify-center mt-0.5 cursor-pointer duration-200 ${
                               t.status === "COMPLETED" 
@@ -234,6 +236,8 @@ export default function Projects() {
 
                         <button 
                           onClick={() => handleDeleteTask(t.id)}
+                          aria-label={`${t.title} 삭제`}
+                          title="일정 삭제"
                           className="p-1 text-slate-300 hover:text-rose-500 rounded duration-200 cursor-pointer"
                         >
                           <Trash2 size={12} />
@@ -245,7 +249,7 @@ export default function Projects() {
               </div>
 
               <div className="p-3.5 rounded-xl bg-orange-50/70 border border-orange-100 text-[11px] text-orange-800 leading-relaxed font-sans">
-                💡 <strong>보안 및 권한 인증 기반:</strong> Spring Security 파이프라인에서 사용자 인증을 검증하고, WebSocket 연계를 통해 다수의 개발자 간 업무 마찰 및 충돌이 가해지는 API 정량 영역을 안정 보장합니다.
+                💡 <strong>구현 범위:</strong> Spring Security·JWT로 사용자 권한을 확인하고, WebSocket/STOMP 채팅과 SSE 알림을 업무 관리 기능에 연결했습니다.
               </div>
             </div>
 

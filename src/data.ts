@@ -16,7 +16,7 @@ export interface Project {
 
 export interface SkillCategory {
   category: string;
-  items: { name: string; level: 'Expert' | 'Advanced' | 'Intermediate'; desc: string }[];
+  items: { name: string; evidence: string; desc: string }[];
 }
 
 export interface Award {
@@ -37,8 +37,8 @@ export interface Education {
 export const portfolioData = {
   personal: {
     name: "박성준 (Seongjun Park)",
-    title: "신뢰할 수 있는 시스템을 만드는 백엔드 개발자",
-    roleDescription: "성능, 정합성, 운영 안정성을 집요하게 고민하며 단순한 기능 구현을 넘어 비즈니스의 신뢰를 지탱하는 백엔드 시스템을 만듭니다.",
+    title: "백엔드 개발자",
+    roleDescription: "Spring Boot 기반 MSA와 Node.js API 서버를 개발하고, 동시성 제어와 부하 테스트를 통해 데이터 정합성과 성능을 검증해 왔습니다. 최근에는 Gemini Enterprise 기반 멀티에이전트 설계와 프롬프트 품질 검증, 제품 QA를 수행하고 있습니다.",
     email: "rjqlrl30@naver.com",
     phone: "010-7723-8372",
     github: "https://github.com/seongxun",
@@ -49,31 +49,41 @@ export const portfolioData = {
     {
       category: "Backend",
       items: [
-        { name: "Java", level: "Advanced", desc: "객체지향 설계와 동작 원리를 깊이 이해하고 멀티스레드 환경을 제어합니다." },
-        { name: "Spring Boot", level: "Advanced", desc: "웹 애플리케이션 프레임워크를 활용해 비즈니스 레이어를 효율적이고 정밀하게 설계합니다." },
-        { name: "JPA (Hibernate)", level: "Advanced", desc: "영속성 컨텍스트, N+1 쿼리 이슈 탐색 및 지연 로딩을 통한 쿼리 최적화를 수행합니다." },
-        { name: "Node.js", level: "Intermediate", desc: "이벤트 루프의 비동기 아키텍처를 이해하고 API 서버 및 파일럿 프로젝트를 탄탄히 구축합니다." }
+        { name: "Java", evidence: "FinLearn · CalIT", desc: "Spring Boot 서비스의 도메인 로직과 트랜잭션 경계를 구현했습니다." },
+        { name: "Spring Boot", evidence: "FinLearn · CalIT", desc: "REST API, Gateway 연동, 서비스 디스커버리 기반 요청 흐름을 구성했습니다." },
+        { name: "JPA (Hibernate)", evidence: "FinLearn · CalIT", desc: "엔티티 관계와 조회 로직을 설계하고 트랜잭션 단위의 데이터 변경을 처리했습니다." },
+        { name: "Node.js", evidence: "HanArmy", desc: "Kakao Skill API 서버와 OpenAI API 비동기 콜백 흐름을 구현했습니다." }
       ]
     },
     {
       category: "Database & Cache",
       items: [
-        { name: "PostgreSQL", level: "Advanced", desc: "인덱스 튜닝, 격리 수준(Isolation Level)을 고려한 동시성 제어 및 관계 설정과 스키마 설계를 진행합니다." },
-        { name: "Redis", level: "Advanced", desc: "세션 보관, 분산 락, 글로벌 캐싱 레이어 활용을 통해 데이터베이스의 부하를 획기적으로 차단합니다." }
+        { name: "PostgreSQL", evidence: "FinLearn · CalIT", desc: "관계형 스키마를 설계하고 계좌 단위 비관적 락으로 동시 주문을 제어했습니다." },
+        { name: "Redis", evidence: "FinLearn · CalIT", desc: "로그아웃 토큰 블랙리스트와 서비스별 캐시·상태 저장 용도로 사용했습니다." }
       ]
     },
     {
       category: "Data Pipeline",
       items: [
-        { name: "Kafka", level: "Intermediate", desc: "이벤트 메시징 큐를 통해 마이크로서비스 간 느슨한 결합(Loose Coupling)과 이벤트 드리븐 비연동 처리를 설계합니다." }
+        { name: "Kafka", evidence: "FinLearn · CalIT", desc: "서비스 간 이벤트 전달과 알림·리마인더 처리 흐름에 적용했습니다." }
       ]
     },
     {
       category: "DevOps & Infra",
       items: [
-        { name: "Docker", level: "Advanced", desc: "컨테이너 가상화를 기반으로 애플리케이션의 이식성과 일관된 컨테이너 실행 환경을 보장합니다." },
-        { name: "AWS", level: "Intermediate", desc: "EC2, RDS, S3 등 다양한 프리미엄 클라우드 서비스들의 구성 및 외부 자산 연결을 배포합니다." },
-        { name: "CI/CD", level: "Intermediate", desc: "GitHub Actions를 활용하여 자동 빌드, 에러 체크 및 클라우드 즉각 배포 파이프라인을 가동합니다." }
+        { name: "Docker", evidence: "FinLearn · CalIT", desc: "서비스와 데이터베이스 실행 환경을 컨테이너로 구성해 개발 환경을 통일했습니다." },
+        { name: "AWS", evidence: "팀 배포 환경", desc: "EC2·RDS·S3 기반 애플리케이션 배포와 외부 연결 구성을 경험했습니다." },
+        { name: "GitHub Actions", evidence: "FinLearn · CalIT", desc: "빌드와 배포 단계를 자동화하고 브랜치 변경 시 검증 흐름을 구성했습니다." },
+        { name: "JMeter", evidence: "FinLearn", desc: "단일 인스턴스와 Gateway 경유 시나리오를 분리해 평균·P95·처리량을 측정했습니다." }
+      ]
+    },
+    {
+      category: "AI Agent",
+      items: [
+        { name: "Gemini Enterprise", evidence: "GoldenPlanet", desc: "Agent Designer 기반 교육 실습 흐름과 에이전트 구성안을 설계했습니다." },
+        { name: "Multi-Agent Design", evidence: "GoldenPlanet", desc: "에이전트 역할·협업 규칙과 요청 기반 라우팅 구조를 설계했습니다." },
+        { name: "Prompt Evaluation", evidence: "GoldenPlanet", desc: "Expected Output·근거·제약 조건을 기준으로 Test-Improve-Retest 검증을 수행했습니다." },
+        { name: "Product QA", evidence: "GoldenPlanet", desc: "사내 MVP의 기능을 점검하고 재현 절차와 개선안을 정리했습니다." }
       ]
     }
   ] as SkillCategory[],
@@ -82,26 +92,25 @@ export const portfolioData = {
       id: "finlearn",
       title: "FinLearn",
       subtitle: "금융 학습과 시즌제 모의투자를 결합한 MSA 기반 금융 플랫폼",
-      period: "2026.04 ~ 2026.05 (1개월)",
-      role: "팀 5인 중 MSA 기반 금융 학습 플랫폼 백엔드 담당 (인증 및 모의투자 도메인 개발)",
-      url: "http://finlearn.xyz",
+      period: "2026.04 ~ 2026.05 (2개월)",
+      role: "팀 5인 · simulation-service 중심 백엔드 개발, user-service MVP 일부 담당",
       github: "https://github.com/F1NLEARN",
       techStack: ["Spring Boot", "Spring Cloud", "Eureka", "Kafka", "PostgreSQL", "Redis", "JMeter"],
       keyFeatures: [
         {
-          title: "도메인 분리 및 비동기 이벤트 아키텍처",
-          description: "소프트웨어 서비스의 확장성과 대용량 처리의 기초를 확보하기 위한 마이크로서비스 아키텍처 구축",
+          title: "모의투자 도메인 API와 MSA 요청 흐름",
+          description: "simulation-service 중심으로 계좌·종목·주문 도메인과 서비스 간 요청 흐름 구성",
           bullets: [
-            "Spring Boot, Spring Cloud Gateway, Eureka, Config Server를 기반으로 User, Quiz, Simulation, Season, Ranking, Achievement 서비스 전반을 철저히 분리.",
-            "PostgreSQL, Redis, Kafka 활용 시드머니 자동 지급 및 랭킹/업적 반영을 위한 마이크로서비스 간 비동기 이벤트 흐름 형성."
+            "종목·관심종목·투자 계좌·매수 주문 API를 구현하고 PostgreSQL 기반 데이터 모델을 구성했습니다.",
+            "Gateway-Eureka-service-DB 요청 흐름을 연결하고 팀의 MSA 구성 요소와 연동했습니다."
           ]
         },
         {
-          title: "동시성 제어 및 대용량 트래픽 안정성 검증",
-          description: "금융 서비스에서 가장 예민하고 정합성이 중요한 거래 거래 대기 데이터 정렬 제어",
+          title: "동시성 제어 및 부하 테스트",
+          description: "동시 주문의 데이터 정합성을 보호하고 두 가지 요청 경로의 성능을 측정",
           bullets: [
-            "모의투자 주문 시스템 내의 계좌 잔고 차감 및 락 걸림을 방지하기 위해 '계좌 단위 비관적 락(Pessimistic Lock)'을 적용하여 치명적인 레이스 컨디션을 전면 차단하고 데이터 정합성 완벽 보장.",
-            "Apache JMeter를 통한 실무 부하 테스트 진행: 배포 서버에서 동시 사용자 50명 기준 총 1,976건의 실시간 주문 요청을 오류율 0.00%의 무결점 상태로 안정적 처리 확인."
+            "계좌 단위 PESSIMISTIC_WRITE와 트랜잭션 처리로 동시 매수 요청 시 예수금과 주문 데이터의 정합성을 유지했습니다.",
+            "단일 인스턴스 100명 요청에서 평균 23.2ms·P95 81ms·729.4 req/s·오류율 0%를 확인했고, Gateway 경유 50명·1,976건에서는 평균 4,133ms·P95 4,684ms 병목을 측정했습니다."
           ]
         }
       ]
@@ -110,23 +119,24 @@ export const portfolioData = {
       id: "calit",
       title: "CalIT",
       subtitle: "개발자 협업 및 일정 관리 서비스",
-      period: "2024.09 ~ 2024.10 (1개월)",
-      role: "백엔드 개발자 (팀원)",
+      period: "프로젝트 2024.09 ~ 2024.10 (1개월)",
+      role: "한화시스템 BEYOND SW 캠프(교육 2024.04 ~ 2024.10) · 백엔드 개발자",
       techStack: ["Spring Boot", "Spring Data JPA", "PostgreSQL", "Spring Security", "WebSocket"],
       keyFeatures: [
         {
-          title: "핵심 API 설계 및 영속성 레이어 최적화",
-          description: "팀 단위 협업 환경의 효율을 극대화하기 위한 안정적인 엔드포인트 설계",
+          title: "협업 기능과 인증·인가 API 구현",
+          description: "팀·일정·업무 데이터를 다루는 REST API와 권한별 접근 흐름 개발",
           bullets: [
-            "Spring Boot 개발 가이드라인을 준수하여 유기적인 객체 관계형 매핑 설계 및 도큐멘테이션에 특화된 Restful API 구현.",
-            "사용자 및 팀 역할에 맞는 인증/인가 시스템(JWT, Security)을 배치하여 안전하고 권한에 맞는 자산 스케줄 제어 보장."
+            "Spring Boot·JPA 기반 REST API와 엔티티 관계를 설계하고 Swagger로 명세를 공유했습니다.",
+            "Spring Security·JWT를 적용해 사용자와 팀 역할에 따른 접근 권한을 처리했습니다."
           ]
         },
         {
-          title: "실시간 협업 및 동기화 구현",
-          description: "일정 충돌 방지와 실시간 인터랙션 구축",
+          title: "실시간 협업과 비동기 알림",
+          description: "채팅·알림·업무 관리 기능을 하나의 워크스페이스로 연결",
           bullets: [
-            "팀원 간 일정 충돌 방지를 위한 실시간 트리거 로직 및 공동 작업 정보 전달 체계 구축 경험 내재화."
+            "WebSocket/STOMP 채팅과 SSE 알림을 구현하고 Scrum·Kanban 업무 관리 흐름과 연동했습니다.",
+            "Redis·Kafka·Spring Batch를 활용해 알림과 리마인더 처리 흐름을 분리했습니다."
           ]
         }
       ]
@@ -140,9 +150,9 @@ export const portfolioData = {
       role: "백엔드 및 AI 연동 담당",
       accomplishments: [
         "카카오 챗봇 기반 군 장병 맞춤형 휴가 준비 서비스 'HanArmy' 개발.",
-        "Node.js를 활용한 Kakao Skill API 서버 구축 및 Firebase Firestore 기반 실시간 사용자 휴가 상태/패턴 수집 및 상태 데이터 레이크 구현.",
-        "OpenAI API 호출 연동 시 카카오톡 인터페이스에서 발생하는 치명적인 5초 응답 타임아웃 문제를 해결하기 위해, '카카오 callbackUrl' 구조의 비동기 분산 가공 방식을 적용하여 사용자 편의성(UX) 극대화.",
-        "정방향 도메인 흐름 분석 및 이로부터 파생되는 장애 시나리오 극복을 위한 영리한 아키텍처 도입을 최고 등급으로 인정받아 최종 우수상(하나금융그룹 회장상 등급) 수상."
+        "Node.js·Express 기반 Kakao Skill API 서버와 Firestore 사용자별 휴가·입대·챗봇 상태 관리 기능을 구현했습니다.",
+        "OpenAI API로 목적지·기간·예산 기반 휴가 일정을 생성하고 Kakao callbackUrl을 활용한 비동기 응답 흐름을 구성했습니다.",
+        "휴가 준비 과정과 금융 상품 추천을 연결한 서비스로 하나 디지털 파워온 2기 우수상을 수상했습니다."
       ]
     }
   ] as Award[],
@@ -151,11 +161,11 @@ export const portfolioData = {
       institution: "서강대학교",
       degree: "컴퓨터공학 학사",
       period: "2017.03 ~ 2024.02 졸업",
-      details: "Sogang University - 컴퓨터 지식의 전반 및 데이터 구조와 데이터 처리에 대한 탄탄한 이론 및 설계 학습"
+      details: "운영체제, 자료구조, 컴퓨터 네트워크 등 컴퓨터공학 기초 학습"
     }
   ] as Education[],
   qualifications: [
     { name: "ADsP (데이터분석 준전문가)", authority: "한국데이터산업진흥원", date: "2025.03" },
-    { name: "영어 (English)", authority: "비즈니스 영문 커뮤니케이션 가능", date: "" }
+    { name: "TOEIC", authority: "895점", date: "2024.08.25" }
   ]
 };

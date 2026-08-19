@@ -49,7 +49,7 @@ export default function Awards() {
 
       await new Promise(r => setTimeout(r, 2300));
       // Exploding at exactly 5 seconds!
-      addLog(`[Kakao Engine] ⚠️ CRITICAL LIMIT REACHED: Kakao requires response within 5.0 seconds!`);
+      addLog(`[Kakao Engine] Response limit reached: Kakao requires a response within 5.0 seconds.`);
       addLog(`[Kakao Engine] System Timeout exception. Dropped connection.`);
       
       setSimState("TIMEOUT_ERROR");
@@ -66,7 +66,7 @@ export default function Awards() {
       // Send immediate progress card back to user (Response within 0.5 sec!)
       setChatMessages(p => [
         ...p,
-        { sender: "BOT", text: "📝 박성준 병장님! OpenAI 엔진이 영리한 카카오 휴가 일정 구상을 시작했습니다. 잠시만 대기해 주세요 (가공 중 ⏳)", time: "10:04" }
+        { sender: "BOT", text: "📝 박성준 병장님! 맞춤형 휴가 일정을 생성하고 있습니다. 잠시만 기다려 주세요. (처리 중 ⏳)", time: "10:04" }
       ]);
       addLog(`[Kakao Engine] Immediate progress message returned within 1.0s. Connection safely closed with 200 OK.`);
 
@@ -101,10 +101,10 @@ export default function Awards() {
             HONORS & ACTIVITIES
           </span>
           <h2 className="font-display font-bold text-3xl sm:text-4xl text-brand-deep mt-3">
-            실적으로 기술의 신뢰도를 입증하다
+            백엔드와 AI API를 연결한 HanArmy
           </h2>
           <p className="text-slate-500 text-sm mt-3">
-            도메인의 실질적 한계를 극복하고 완성도 높은 비즈니스 모델로 평가받은 결과물입니다.
+            카카오 챗봇의 응답 제한을 고려해 callbackUrl 기반 비동기 응답 흐름을 구현했고, 하나 디지털 파워온 2기 우수상을 수상했습니다.
           </p>
         </div>
 
@@ -153,7 +153,7 @@ export default function Awards() {
                 <div className="flex items-center gap-1.5">
                   <Server size={14} className="text-brand-secondary" />
                   <h4 className="font-display font-semibold text-xs text-slate-700 tracking-wide uppercase">
-                    카카오 응답지연 해결 아키텍처 가상기
+                    카카오 비동기 응답 UI 시뮬레이션
                   </h4>
                 </div>
                 <span className="text-[9px] font-mono bg-blue-50 text-brand-primary px-2 py-0.5 rounded-full font-bold">

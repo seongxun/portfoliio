@@ -208,7 +208,7 @@ export default function TrustSandbox() {
                     <Lock size={14} className={lockMode === "PESSIMISTIC" ? "text-emerald-500" : "text-slate-400"} />
                   </div>
                   <p className="text-[11px] text-slate-500 leading-normal">
-                    <strong>박성준이 적용한 해법.</strong> 트랜잭션 개시 즉시 DB 로우에 강력한 락(<code className="font-mono text-[10px] bg-emerald-50 px-1 text-emerald-800">SELECT FOR UPDATE</code>)을 선점해 데이터 무결성을 보존합니다.
+                    <strong>프로젝트 적용 방식.</strong> 트랜잭션 개시 시 DB 로우에 비관적 락(<code className="font-mono text-[10px] bg-emerald-50 px-1 text-emerald-800">SELECT FOR UPDATE</code>)을 적용해 동시 요청에서 발생할 수 있는 변경 충돌을 방지했습니다.
                   </p>
                 </div>
 
@@ -334,12 +334,12 @@ export default function TrustSandbox() {
                     </div>
                     <div>
                       <strong className="font-bold">
-                        {simStatus === "SUCCESS" ? "정합성 완벽 유지 (Pessimistic lock)" : "데이터 정합성 손실 발생"}
+                        {simStatus === "SUCCESS" ? "잔액 정합성 유지 (Pessimistic lock)" : "잔액 데이터 불일치 발생"}
                       </strong>
                       <p className="text-[11px] text-slate-300 mt-1 leading-snug">
                         {simStatus === "SUCCESS"
-                          ? "비관적 락을 통해 모든 스레드가 차례대로 줄을 섰으며 3번째 주문 시점에는 정확하게 잔고 고갈을 파악하여 거부함으로써 100% 데이터 정합성을 보장했습니다."
-                          : "락이 없었던 이유로 모든 스레드가 10만 원 상태를 공유해 출금 체크를 통과했습니다. 결과적으로 12만 원이 이중인출 되었으나 장부에는 6만 원만 차감 기록되는 치명적 손상이 발생하였습니다."}
+                          ? "비관적 락을 적용한 시뮬레이션에서는 요청을 순서대로 처리하고, 잔액이 부족한 세 번째 요청을 거부합니다."
+                          : "락이 없는 시뮬레이션에서는 여러 스레드가 같은 초기 잔액을 읽어 검사를 통과해 원장 잔액과 처리 결과가 달라집니다."}
                       </p>
                     </div>
                   </motion.div>

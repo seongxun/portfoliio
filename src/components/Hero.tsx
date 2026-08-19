@@ -1,8 +1,6 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import { 
-  ArrowRight, 
-  Download, 
   Server, 
   RefreshCw, 
   Layers, 
@@ -11,9 +9,7 @@ import {
   Database,
   Cpu,
   BarChart3,
-  ExternalLink,
   Github,
-  Zap,
   Lock
 } from "lucide-react";
 import { portfolioData } from "../data";
@@ -31,9 +27,6 @@ export default function Hero() {
   const [activeStock, setActiveStock] = useState<"SAMSUNG" | "SK_HYNIX" | null>(null);
   const [simLog, setSimLog] = useState<string[]>(["[System] FinLearn Engine v1.2 Initialized.", "[Database] Connected to PostgreSQL (Primary)."]);
   const [isProcessing, setIsProcessing] = useState(false);
-
-  // Tab 2: JMeter benchmark parameters
-  const [jmeterThreads, setJmeterThreads] = useState<number>(50);
 
   // Background ticker simulation
   useEffect(() => {
@@ -92,7 +85,7 @@ export default function Hero() {
         ]);
         addLog(`[SimulationDb] Balance verified & reduced by ₩${total.toLocaleString()}`);
         addLog(`[SimulationDb] Account released. Commit OK.`);
-        addLog(`[System] Transaction success. 0% Concurrency Conflict.`);
+        addLog(`[System] UI simulation transaction completed.`);
       } else {
         addLog(`[System] Transaction failed (INSUFFICIENT_FUNDS)`);
       }
@@ -101,19 +94,6 @@ export default function Hero() {
     }, 1000);
   };
 
-  const getJmeterMetrics = (threads: number) => {
-    if (threads <= 15) {
-      return { reqs: 640, latency: 12, error: "0.00%", cpu: "14%", status: "OPTIMAL" };
-    } else if (threads <= 35) {
-      return { reqs: 1250, latency: 26, error: "0.00%", cpu: "38%", status: "STABLE" };
-    } else if (threads <= 50) {
-      return { reqs: 1976, latency: 42, error: "0.00%", cpu: "62%", status: "VERIFIED" };
-    } else {
-      return { reqs: 2380, latency: 110, error: "1.42%", cpu: "95%", status: "WARNING" };
-    }
-  };
-
-  const metrics = getJmeterMetrics(jmeterThreads);
   const finlearnProject = portfolioData.projects.find(p => p.id === "finlearn")!;
 
   return (
@@ -157,7 +137,7 @@ export default function Hero() {
                 transition={{ duration: 0.5, delay: 0.1 }}
                 className="text-sm sm:text-base text-slate-600 leading-relaxed font-normal"
               >
-                성능, 데이터 정합성, 운영 안정성을 치열하게 연구하며 비즈니스의 흔들리지 않는 신뢰 구조를 만들어냅니다. 모의 투자 아키텍처를 설계하고 부하를 완벽히 통제한 저의 핵심 대표작, <strong>핀러닝(FinLearn)</strong>을 통해 실증적인 기술을 보여 드립니다.
+                Spring Boot 기반 MSA와 Node.js API 서버를 개발하고, 동시성 제어와 부하 테스트로 데이터 정합성과 성능을 검증해 왔습니다. 대표 프로젝트인 <strong>FINLEARN</strong>에서는 모의투자 주문 흐름과 계좌 단위 동시성 제어를 담당했습니다.
               </motion.p>
             </div>
 
@@ -188,20 +168,10 @@ export default function Hero() {
                     <a
                       href={finlearnProject.github}
                       target="_blank"
-                      referrerPolicy="no-referrer"
+                      rel="noopener noreferrer"
                       className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-bold bg-slate-100 hover:bg-slate-200 text-slate-700 transition-all cursor-pointer border border-slate-200/50"
                     >
                       <Github size={12} /> Repo
-                    </a>
-                  )}
-                  {finlearnProject.url && (
-                    <a
-                      href={finlearnProject.url}
-                      target="_blank"
-                      referrerPolicy="no-referrer"
-                      className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-bold bg-brand-light text-brand-primary border border-blue-100 hover:bg-blue-50 transition-all cursor-pointer"
-                    >
-                      <ExternalLink size={12} /> Live
                     </a>
                   )}
                 </div>
@@ -304,7 +274,7 @@ export default function Hero() {
                       <div className="flex items-center gap-2">
                         <div className="w-2 h-2 rounded-full bg-emerald-500 animate-ping" />
                         <span className="text-[10px] font-mono font-bold tracking-wider text-slate-600">
-                          FINLEARN CORE LIVE ORDER GATEWAY
+                          FINLEARN ORDER FLOW UI SIMULATION
                         </span>
                       </div>
                       <div className="px-2 py-0.5 rounded bg-slate-50 border border-slate-200 text-[10px] font-mono font-semibold text-brand-primary">
@@ -444,94 +414,47 @@ export default function Hero() {
                       <div className="flex items-center gap-1.5">
                         <BarChart3 size={14} className="text-brand-primary" />
                         <h4 className="font-display font-semibold text-[10px] tracking-tight uppercase text-slate-700">
-                          Apache JMeter 1개월 대용량 실증 트랙터
+                          Apache JMeter 측정 결과
                         </h4>
                       </div>
                       <span className="text-[9px] font-mono bg-blue-50 text-brand-primary px-2 py-0.5 rounded-full font-bold">
-                        BUILT-IN AGENT
+                        VERIFIED TEST DATA
                       </span>
                     </div>
 
                     <p className="text-[11px] text-slate-500 leading-normal">
-                      배포 환경에서 가해지는 동시성 요청을 실시간으로 추정한 가상 데이터 레이아웃입니다. 드래그하여 동시 트래픽 부하 상태를 다르게 제어할 수 있습니다.
+                      임의 보간값이 아닌 실제 테스트에서 확인한 두 가지 요청 경로의 결과입니다.
                     </p>
 
-                    <div className="bg-slate-50 p-4 rounded-xl border border-slate-200/60 flex flex-col gap-2">
-                      <div className="flex justify-between items-center">
-                        <span className="text-xs text-slate-500 font-bold">동시 사용자 및 계좌 스레드 수 (Concurrent Users)</span>
-                        <span className="text-xs font-mono font-bold text-brand-primary">{jmeterThreads} Users</span>
-                      </div>
-                      
-                      <input
-                        type="range"
-                        min="10"
-                        max="100"
-                        step="5"
-                        value={jmeterThreads}
-                        onChange={(e) => setJmeterThreads(parseInt(e.target.value))}
-                        className="w-full h-1.5 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-brand-primary"
-                      />
-
-                      <div className="flex justify-between text-[9px] text-slate-400 font-mono mt-0.5">
-                        <span>10 Users</span>
-                        <span className="text-brand-primary font-bold">50 Users (검증 타겟)</span>
-                        <span>100 Users</span>
-                      </div>
-                    </div>
-
-                    {/* Benchmark Output Display */}
-                    <div className="grid grid-cols-2 gap-2 mt-1">
-                      
-                      <div className="p-3 bg-slate-50/55 rounded-xl border border-slate-100 flex flex-col">
-                        <span className="text-[10px] font-bold text-slate-400 uppercase tracking-wider mb-0.5">
-                          처리 완료 요청수 (Throughput)
-                        </span>
-                        <span className="text-[14px] font-black text-brand-deep font-mono">
-                          {metrics.reqs} Req
-                        </span>
+                    <div className="grid gap-3">
+                      <div className="p-4 bg-slate-50 rounded-xl border border-slate-200/70">
+                        <div className="flex items-center justify-between gap-3">
+                          <strong className="text-xs text-brand-deep">단일 인스턴스 · 100명 동시 요청</strong>
+                          <span className="text-[10px] font-mono text-emerald-600">오류율 0%</span>
+                        </div>
+                        <div className="grid grid-cols-3 gap-2 mt-3 text-center">
+                          <div><span className="block text-sm font-bold font-mono text-brand-primary">23.2ms</span><span className="text-[9px] text-slate-400">평균</span></div>
+                          <div><span className="block text-sm font-bold font-mono text-brand-primary">81ms</span><span className="text-[9px] text-slate-400">P95</span></div>
+                          <div><span className="block text-sm font-bold font-mono text-brand-primary">729.4</span><span className="text-[9px] text-slate-400">req/s</span></div>
+                        </div>
                       </div>
 
-                      <div className="p-3 bg-slate-50/55 rounded-xl border border-slate-100/60 flex flex-col">
-                        <span className="text-[10px] font-bold text-slate-400 uppercase tracking-wider mb-0.5">
-                          평균 응답 속도 (Latency)
-                        </span>
-                        <span className="text-[14px] font-black text-brand-primary font-mono">
-                          {metrics.latency} ms
-                        </span>
+                      <div className="p-4 bg-amber-50/60 rounded-xl border border-amber-100">
+                        <div className="flex items-center justify-between gap-3">
+                          <strong className="text-xs text-brand-deep">Gateway 경유 · 50명 / 1,976건</strong>
+                          <span className="text-[10px] font-mono text-emerald-600">오류율 0%</span>
+                        </div>
+                        <div className="grid grid-cols-2 gap-2 mt-3 text-center">
+                          <div><span className="block text-sm font-bold font-mono text-amber-700">4,133ms</span><span className="text-[9px] text-slate-400">평균</span></div>
+                          <div><span className="block text-sm font-bold font-mono text-amber-700">4,684ms</span><span className="text-[9px] text-slate-400">P95</span></div>
+                        </div>
                       </div>
-
-                      <div className="p-3 bg-slate-50/55 rounded-xl border border-slate-100/60 flex flex-col">
-                        <span className="text-[10px] font-bold text-slate-400 uppercase tracking-wider mb-0.5">
-                          요청 오류율 (Error Rate)
-                        </span>
-                        <span className={`text-[14px] font-black font-mono ${
-                          metrics.error === "0.00%" ? "text-emerald-500" : "text-amber-500"
-                        }`}>
-                          {metrics.error}
-                        </span>
-                      </div>
-
-                      <div className="p-3 bg-slate-50/55 rounded-xl border border-slate-100/60 flex flex-col">
-                        <span className="text-[10px] font-bold text-slate-400 uppercase tracking-wider mb-0.5">
-                          테스트 서버 상태 (State)
-                        </span>
-                        <span className={`text-[12px] font-extrabold font-mono ${
-                          metrics.status === "VERIFIED"
-                            ? "text-brand-primary underline decoration-blue-200"
-                            : metrics.status === "OPTIMAL" || metrics.status === "STABLE"
-                            ? "text-emerald-500"
-                            : "text-rose-500"
-                        }`}>
-                          {metrics.status} {metrics.status === "VERIFIED" ? "🏆" : ""}
-                        </span>
-                      </div>
-
                     </div>
 
                     <div className="p-3 rounded-lg bg-blue-50/50 border border-blue-100/50 flex gap-2.5 items-start mt-1">
                       <Lock size={14} className="text-brand-primary shrink-0 mt-0.5" />
                       <p className="text-[10.5px] text-slate-600 leading-normal font-sans">
-                        <strong>데이터 정합성 완벽 입증:</strong> 동시 주문 <strong>50명</strong> 기준, 낙관적 락 대비 더 강한 데이터 충돌 저지율을 보장하는 <strong>비관적 락(Pessimistic Lock)</strong>으로 <strong>1,976건을 오류율 0%</strong>로 안전 가공 처리를 끝마쳤습니다 (JMeter 계측 데이터 결과값).
+                        계좌 단위 <strong>PESSIMISTIC_WRITE</strong>와 트랜잭션 처리로 동시 매수 요청의 예수금·주문 데이터 정합성을 확인했습니다. Gateway 경유 결과에서는 높은 응답 지연을 병목으로 기록했습니다.
                       </p>
                     </div>
                   </motion.div>
@@ -555,7 +478,7 @@ export default function Hero() {
                         </h4>
                       </div>
                       <span className="text-[9px] font-mono bg-emerald-50 text-emerald-600 px-1.5 py-0.5 rounded font-black">
-                        ACTIVE STATE
+                        ARCHITECTURE VIEW
                       </span>
                     </div>
 

@@ -17,9 +17,9 @@ const responsibilities = [
   },
   {
     icon: Workflow,
-    title: "멀티에이전트 구조 및 라우팅 개선",
+    title: "멀티에이전트 구조 및 라우팅 설계 개선",
     description:
-      "메인·업무파악·주간보고서 작성 에이전트의 역할과 협업 규칙을 정의하고, 고정 순차 호출을 요청 기반 동적 라우팅 방식으로 개선했습니다.",
+      "설계안에서 메인·업무파악·주간보고서 작성 에이전트의 역할과 협업 규칙을 정의하고, 고정 순차 호출을 요청 기반 동적 라우팅으로 재설계했습니다.",
   },
   {
     icon: SearchCheck,
@@ -31,14 +31,14 @@ const responsibilities = [
     icon: Presentation,
     title: "교육 운영 및 제품 QA",
     description:
-      "교육 진행 후 참가자 피드백과 디브리핑 보고서를 정리하고, Cogito MVP QA·개선안 작성과 AI Summit 지원 준비를 맡았습니다.",
+      "교육 후 참가자 피드백과 디브리핑 내용을 정리하고, 사내 MVP의 기능을 점검해 재현 절차와 개선안을 작성했습니다.",
   },
 ];
 
 const keywords = [
   "Gemini Enterprise",
   "Multi-Agent",
-  "Prompt Design",
+  "Prompt Evaluation",
   "Product QA",
   "Google Cloud",
 ];
@@ -55,7 +55,7 @@ export default function Experience() {
             WORK EXPERIENCE
           </span>
           <h2 className="font-display font-bold text-3xl sm:text-4xl text-brand-deep mt-3">
-            골든플래닛에서 수행한 AX 실무
+            골든플래닛 AX Product Unit 인턴 경험
           </h2>
           <p className="text-slate-500 text-sm mt-3">
             AI Agent 교육 콘텐츠 설계부터 멀티에이전트 검증과 제품 QA까지 수행하고 있습니다.
@@ -82,6 +82,7 @@ export default function Experience() {
                   (주)골든플래닛
                 </h3>
                 <p className="text-xs text-slate-500 mt-1">2026.07 ~ 현재</p>
+                <p className="text-xs text-slate-500 mt-1">AX Product Unit · 인턴</p>
               </div>
             </div>
 

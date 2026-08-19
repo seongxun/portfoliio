@@ -13,7 +13,7 @@ export default function Navbar() {
       setScrolled(window.scrollY > 20);
 
       // Simple active link tracker
-      const sections = ["about", "hero", "experience", "skills", "projects", "sandbox", "awards", "education"];
+      const sections = ["about", "experience", "hero", "projects", "skills", "sandbox", "awards", "education"];
       const current = sections.find((sect) => {
         const el = document.getElementById(sect);
         if (el) {
@@ -22,7 +22,7 @@ export default function Navbar() {
         }
         return false;
       });
-      if (current) setActiveSection(current);
+      if (current) setActiveSection(current === "projects" ? "hero" : current);
     };
 
     window.addEventListener("scroll", handleScroll);
@@ -32,8 +32,8 @@ export default function Navbar() {
   const navItems = [
     { id: "about", label: "About" },
     { id: "experience", label: "Experience" },
+    { id: "hero", label: "Projects" },
     { id: "skills", label: "Skills" },
-    { id: "projects", label: "Projects" },
     { id: "sandbox", label: "Simulator" },
     { id: "awards", label: "Awards & Activities" },
     { id: "education", label: "Education" },
@@ -66,7 +66,9 @@ export default function Navbar() {
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
         {/* Logo */}
-        <div 
+        <button
+          type="button"
+          aria-label="페이지 맨 위로 이동"
           onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
           className="flex items-center gap-2 cursor-pointer group"
         >
@@ -81,7 +83,7 @@ export default function Navbar() {
               Trust Builder
             </span>
           </div>
-        </div>
+        </button>
 
         {/* Desktop Navigation */}
         <nav className="hidden md:flex items-center gap-1">
@@ -110,9 +112,17 @@ export default function Navbar() {
         {/* CTAs */}
         <div className="hidden lg:flex items-center gap-3">
           <a
+            href="/resume.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center gap-1.5 px-3 py-2 rounded-xl text-xs font-semibold text-brand-primary bg-blue-50 hover:bg-blue-100 transition-colors"
+          >
+            <FileText size={16} /> Resume
+          </a>
+          <a
             href={portfolioData.personal.github}
             target="_blank"
-            referrerPolicy="no-referrer"
+            rel="noopener noreferrer"
             className="flex items-center justify-center p-2 rounded-xl text-slate-600 hover:text-brand-primary hover:bg-indigo-50/50 transition-all"
             title="GitHub"
           >
@@ -131,12 +141,16 @@ export default function Navbar() {
         <div className="md:hidden flex items-center gap-3">
           <a
             href={`mailto:${portfolioData.personal.email}`}
+            aria-label="이메일 보내기"
+            title="이메일 보내기"
             className="p-2 rounded-xl text-slate-700 bg-slate-100 hover:bg-brand-light hover:text-brand-primary transition-colors"
           >
             <Send size={18} />
           </a>
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            aria-label={mobileMenuOpen ? "메뉴 닫기" : "메뉴 열기"}
+            title={mobileMenuOpen ? "메뉴 닫기" : "메뉴 열기"}
             className="p-2 rounded-xl text-slate-700 hover:bg-slate-100 transition-colors"
           >
             {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
@@ -166,12 +180,21 @@ export default function Navbar() {
             </button>
           ))}
           <hr className="border-slate-100 my-2" />
+          <a
+            href="/resume.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="mx-4 px-4 py-3 rounded-xl bg-blue-50 text-brand-primary text-sm font-semibold flex items-center gap-2"
+          >
+            <FileText size={17} /> 이력서 PDF 보기
+          </a>
           <div className="flex items-center justify-between px-4">
             <span className="text-xs text-slate-400 font-mono">SOCIAL CHANNELS</span>
             <div className="flex items-center gap-3">
               <a
                 href={portfolioData.personal.github}
                 target="_blank"
+                rel="noopener noreferrer"
                 className="p-2 bg-slate-50 rounded-lg text-slate-600"
               >
                 <Github size={18} />
@@ -179,6 +202,7 @@ export default function Navbar() {
               <a
                 href={portfolioData.personal.blog}
                 target="_blank"
+                rel="noopener noreferrer"
                 className="text-xs text-brand-primary font-semibold underline"
               >
                 Velog

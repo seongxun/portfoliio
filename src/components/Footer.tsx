@@ -22,14 +22,14 @@ export default function Footer() {
                 SEONGJUN.P
               </span>
               <span className="text-[9.5px] font-mono tracking-wider text-slate-400 uppercase">
-                Backend & Reliability Engineer
+                Backend Engineer
               </span>
             </div>
           </div>
 
           {/* Core statement */}
           <div className="text-center md:text-left max-w-sm text-xs text-slate-400 leading-normal">
-            성능, 정합성, 운영 안정성을 집요하게 고민하며 신뢰할 수 있는 백엔드 시스템의 기반을 구축합니다.
+            요청 흐름과 데이터 정합성을 설계하고, 테스트 결과로 성능과 개선 지점을 확인합니다.
           </div>
 
           {/* Social Channels */}
@@ -37,7 +37,7 @@ export default function Footer() {
             <a
               href={portfolioData.personal.github}
               target="_blank"
-              referrerPolicy="no-referrer"
+              rel="noopener noreferrer"
               className="w-10 h-10 rounded-xl bg-slate-800/80 hover:bg-brand-primary text-slate-400 hover:text-white flex items-center justify-center transition-all shadow-md cursor-pointer"
               title="GitHub"
             >
@@ -46,7 +46,7 @@ export default function Footer() {
             <a
               href={portfolioData.personal.blog}
               target="_blank"
-              referrerPolicy="no-referrer"
+              rel="noopener noreferrer"
               className="w-10 h-10 rounded-xl bg-slate-800/80 hover:bg-brand-primary text-slate-400 hover:text-white flex items-center justify-center transition-all shadow-md cursor-pointer"
               title="Velog Blog"
             >
@@ -67,10 +67,10 @@ export default function Footer() {
         <div className="flex flex-col md:flex-row justify-between items-center gap-4 mt-8 text-[11px] text-slate-500 font-mono">
           <div className="flex items-center gap-1.5">
             <ShieldCheck size={14} className="text-brand-secondary" />
-            <span>Secured Dev Sandbox Portfolio. Authorized Access: OK</span>
+            <span>Backend Portfolio · Projects and Work Experience</span>
           </div>
           <div>
-            &copy; {currentYear} Park Seongjun. All Rights Reserved. Crafted for Vercel/GitHub Deployment.
+            &copy; {currentYear} Seongjun Park. All Rights Reserved.
           </div>
         </div>
 

@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { motion } from "motion/react";
-import { Mail, Phone, Github, BookOpen, Copy, Check, ShieldCheck, Zap, Database } from "lucide-react";
+import { Mail, Phone, Github, BookOpen, Copy, Check, ShieldCheck, Zap, Database, FileText } from "lucide-react";
 import { portfolioData } from "../data";
 
 export default function About() {
@@ -16,17 +16,17 @@ export default function About() {
     {
       icon: <Zap className="text-amber-500" size={24} />,
       title: "성능 (Performance)",
-      desc: "불필요한 DB 쿼리와 트래픽 지연 요소를 제거하여 극한의 속도를 쫓습니다. 무거운 동기식 흐름을 비동기 이벤트(Kafka)로 풀어내 대용량 환경에서도 레이턴시를 최소화합니다.",
+      desc: "JMeter로 단일 인스턴스와 Gateway 경유 요청을 측정하고 평균·P95·처리량을 비교해 병목 지점을 확인했습니다.",
     },
     {
       icon: <Database className="text-brand-secondary" size={24} />,
       title: "정합성 (Consistency)",
-      desc: "정합성이 중요한 데이터에서 타협하지 않습니다. Race Condition이 발생할 수 있는 동시 요청 상황에서 비관적 락(Pessimistic Lock)과 트랜잭션을 활용해 데이터의 정확성을 보장합니다.",
+      desc: "FINLEARN 주문 처리에서 계좌 단위 비관적 락과 트랜잭션을 적용해 동시 요청의 예수금·주문 데이터 정합성을 유지했습니다.",
     },
     {
       icon: <ShieldCheck className="text-emerald-500" size={24} />,
       title: "운영 안정성 (Stability)",
-      desc: "배포는 시작일 뿐입니다. JMeter 부하 테스트를 통한 부하 한계를 계측하고, MSA 아키텍처 내에서 Gateway, Eureka의 헬스체크 및 서킷 브레이커 등을 고려해 무중단 운영을 희망합니다.",
+      desc: "Gateway-Eureka-service-DB 요청 흐름을 구성하고 부하 테스트 결과를 통해 정상 처리와 개선이 필요한 지연 구간을 함께 확인했습니다.",
     },
   ];
 
@@ -40,10 +40,10 @@ export default function About() {
             ABOUT ME
           </span>
           <h2 className="font-display font-bold text-3xl sm:text-4xl text-brand-deep mt-3">
-            시스템의 신뢰를 기술로 구축합니다
+            백엔드 시스템을 설계하고 검증합니다
           </h2>
           <p className="text-slate-500 text-sm mt-3">
-            비즈니스의 신뢰를 지탱하는 백엔드 아키텍처를 안전하고 확장 가능하게 설계합니다.
+            요청 흐름, 데이터 정합성, 성능 지표를 근거로 문제를 분석합니다.
           </p>
         </div>
 
@@ -70,7 +70,7 @@ export default function About() {
               </div>
 
               <blockquote className="text-sm font-medium italic text-slate-600 border-l-2 border-brand-primary pl-3.5 my-4 leading-normal">
-                "성능, 정합성, 운영 안정성을 집요하게 고민하는 백엔드 아키텍처"
+                "구현한 기능을 수치와 테스트로 확인하는 백엔드 개발자"
               </blockquote>
             </div>
 
@@ -121,7 +121,7 @@ export default function About() {
               <a
                 href={portfolioData.personal.github}
                 target="_blank"
-                referrerPolicy="no-referrer"
+                rel="noopener noreferrer"
                 className="flex items-center gap-2.5 p-3 bg-white hover:bg-slate-50 rounded-xl border border-slate-100 hover:border-indigo-150 transition-all"
               >
                 <div className="text-slate-800"><Github size={16} /></div>
@@ -132,11 +132,22 @@ export default function About() {
               <a
                 href={portfolioData.personal.blog}
                 target="_blank"
-                referrerPolicy="no-referrer"
+                rel="noopener noreferrer"
                 className="flex items-center gap-2.5 p-3 bg-white hover:bg-slate-50 rounded-xl border border-slate-100 hover:border-indigo-150 transition-all"
               >
                 <div className="text-brand-primary"><BookOpen size={16} /></div>
                 <span className="text-xs font-semibold text-slate-700 truncate">velog.io/@rjqlrl30</span>
+              </a>
+
+              {/* Resume */}
+              <a
+                href="/resume.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-2.5 p-3 bg-white hover:bg-slate-50 rounded-xl border border-slate-100 hover:border-indigo-150 transition-all"
+              >
+                <div className="text-brand-primary"><FileText size={16} /></div>
+                <span className="text-xs font-semibold text-slate-700 truncate">이력서 PDF 보기</span>
               </a>
 
             </div>
@@ -178,7 +189,7 @@ export default function About() {
                 <Check size={18} />
               </div>
               <p className="text-slate-600 text-xs leading-normal">
-                비관적 락(Pessimistic Lock), JVM 동기화 모니터, Kafka 비동기 큐잉, Spring Security 등을 상황에 맞게 적용하여 다양한 서비스의 데이터 정합성과 안정적인 시스템 동작을 구현합니다.
+                Spring Boot 기반 MSA와 Node.js API 서버를 개발하고, 최근에는 Gemini Enterprise 기반 멀티에이전트 설계·프롬프트 검증·제품 QA로 경험을 확장하고 있습니다.
               </p>
             </div>
           </div>
